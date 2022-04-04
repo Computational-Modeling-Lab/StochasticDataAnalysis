@@ -4,13 +4,24 @@ plt.style.use("fivethirtyeight")
 plt.rcParams["figure.figsize"] = (20,8)
 from statsmodels.tsa.stattools import acf
 
+s1 = 1
+s2 = 0.5
+s3 = 0.01
+number_of_steps = 100
+start = 0
+process1= []
+process08= []
+process01= []
+noises = []
+
 process1.append(start)
 process08.append(start)
 process01.append(start)
 noises.append(start)
+
 for i in range(number_of_steps):
     noise = np.random.normal(0,1)
-    noises.append(noise + y[i])
+    noises.append(noise)
     process1.append(s1*process1[-1] + noise)
     process08.append(s2*process08[-1] + noise)
     process01.append(s3*process01[-1] + noise)
