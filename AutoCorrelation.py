@@ -11,7 +11,7 @@ plt.style.use("fivethirtyeight")
 
 #1. random data from a gaussian distribution
 random_data = np.random.normal(0,1,1000)
-x1 = np.linspace(0,1,100) 
+x1 = np.linspace(0,1,1000) 
 
 #2. Data from a sin function
 
@@ -23,14 +23,16 @@ y = np.sin(x2)
 plt.plot(x1,random_data)
 plt.title('Random Data')
 
+plt.show()
+
 plt.plot(x2,y)
 plt.title('Sinusoid data')
 
+plt.show()
+
 # Calculate and plot full Autocorrelation of both datasets
-plt.plot(plt.plot(acf(y,adjusted=True,nlags=500)))
+plt.plot(acf(y,adjusted=True,nlags=500))
 plt.title('AutoCorrelation of Sin(x) Data')
 
-plt.plot(acf(random_data,adjusted=True,nlags=500))
-plt.title('AutoCorrelation of Random Data')
 
 plt.show()
