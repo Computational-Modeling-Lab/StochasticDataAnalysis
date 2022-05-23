@@ -8,11 +8,14 @@ plt.style.use("fivethirtyeight")
 # Simple moving average
 def SMA(data,lag=3):
     sma = []
-    for i in range(lag):
+    for i in range(lag//2):
         sma.append(np.nan)
-    for i in range(lag,len(data)+1):
-        sma.append(np.mean(data[i-lag:i]))
+    for i in range(lag//2,len(data)-lag//2):
+        sma.append(np.mean(data[i-lag//2:i+lag//2+1]))
+    for i in range(len(data)-lag//2,len(data)):
+        sma.append(np.nan)
     return np.array(sma)
+        
 
 #Create our data sets
 #1. random data from a normal distribution
