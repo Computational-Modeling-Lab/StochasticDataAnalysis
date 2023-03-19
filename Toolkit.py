@@ -34,7 +34,7 @@ def OU(dt=1, X0=0, num_steps= 10000, alpha=0.5, mu=0, sigma=0.5):
         res[t] = alpha*res[t-1]*dt + sigma*np.random.normal(mu,sigma)
     return res
 
-def WhiteNoise(dt=1,X0=0,num_steps=1000, mu=0, sigma=1,a=1.):
+def WhiteNoise(X0=0,num_steps=1000, mu=0, sigma=1,a=1.):
     '''
     X0: Starting Point
     num_steps: Number of steps
