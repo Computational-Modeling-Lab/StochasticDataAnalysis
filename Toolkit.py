@@ -14,7 +14,6 @@ def Wiener(dt=1,X0=0,num_steps=10000, mu=0, sigma=1):
     res[0] = X0
     # calculate and store time series
     for t in range(1,num_steps):
-        #         X(t+dt)=X(t)+sqrt(dt)*npr.randn(Nt)
         res[t] = res[t-1] + np.random.normal(mu,sigma)*dt
 
     # return time series
@@ -33,6 +32,26 @@ def OU(dt=1, X0=0, num_steps= 10000, alpha=0.5, mu=0, sigma=0.5):
     res[0] = X0
     for t in range(1,num_steps):
         res[t] = alpha*res[t-1]*dt + sigma*np.random.normal(mu,sigma)
+    return res
+
+def WhiteNoise(dt=1,X0=0,num_steps=10000, mu=0, sigma=1,a=2.):
+    '''
+    dt: Time step
+    X0: Starting Point
+    num_steps: Number of steps
+    mu: Mean of Gaussian
+    sigma: STD of Gaussian
+    a: amplification parameter (a=1 gives a Wiener Process)
+    '''
+    # create result array
+    res = np.zeros(num_steps)
+    # initialize start value
+    res[0] = X0
+    # calculate and store time series
+    for t in range(1,num_steps):
+        res[t] = res[t-1] + a*np.random.normal(mu,sigma)*dt
+
+    # return time series
     return res
 
 def AutocorrelationFunction(x, lag=20):
