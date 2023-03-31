@@ -77,3 +77,16 @@ def MovingAverage(timeseries,lag=3,centered=False):
         for i in range(lag,len(timeseries)):
              ma[i] = np.mean(timeseries[i-lag:i])
     return ma
+
+def VarianceFunction(x, lag):
+    return [np.var((np.cumsum(np.insert(x, 0, 0))[i:] - np.cumsum(np.insert(x, 0, 0))[:-i] )/ float(i))/np.var(x)
+            for i in range(1, lag + 1)]
+
+
+def sin(t,T=2*np.pi,A=1):
+    '''
+    A: Amplitude
+    T: Period
+    t: time-steps
+    '''
+    return A*np.sin(2*np.pi/T*t)
